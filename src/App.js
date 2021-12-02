@@ -1,23 +1,47 @@
-import logo from './logo.svg';
+
 import './App.css';
+import AppBarCustom from './Components/AppBar/AppBar';
+import Carousel from './Components/Carousel/Carousel';
+import Home from './Components/Home/Home';
+import Footer from './Components/Footer/Footer';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import CourseDetails from './Components/CourseDetails/CourseDetails';
+import About from './Components/About/About';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+      <Router>
+      <AppBarCustom />
+        
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/course/:courseId">
+            <CourseDetails />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/services">
+            <Home />
+          </Route>
+        </Switch>
+        {/* </div> */}
+        <Footer />
+      </Router>
+
     </div>
   );
 }
